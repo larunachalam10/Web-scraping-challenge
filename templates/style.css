@@ -1,0 +1,21 @@
+.img-size-4 {
+    max-width: 500px;
+    max-height: 700px;
+    width: 100%;
+    height: auto;
+}
+
+.fact-style{
+    max-width: 150px;
+    max-height: 50px;
+    font-size: 15px;
+    margin-bottom: 65px;
+
+}
+
+.box{
+    padding-top: 40px;
+    margin: 10px;
+    text-align: center;
+
+}

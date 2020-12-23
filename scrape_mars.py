@@ -6,6 +6,7 @@ import pandas as pd
 import os
 import datetime as dt
 import time
+
 def init_browser():
     
     executable_path = {"executable_path": "/usr/local/bin/chromedriver"}
@@ -82,7 +83,7 @@ def mars_facts():
     return mars_html
 
 
-#Mars Hemisphere----------------
+#MARS HEMISPHERE----------------
 
 def mars_hemisphere():
 
@@ -98,28 +99,22 @@ def mars_hemisphere():
         
     desc= soup.find_all("div",class_="item")
     main_url="https://astrogeology.usgs.gov"
-    #print(desc)
-    title=[]
-    img=[]
-    post={}
+    hemispheres = []
 
     for  i in desc:
-        title.append(i.find('h3').text)
+        post = {}
+        post['title'] = (i.find('h3').text)
         partial_link=i.find('a',class_="itemLink product-item")['href']
         browser.visit(main_url + partial_link)
         time.sleep(3)
         partial_img_html=browser.html
         soup1=bs(partial_img_html,"html.parser")
-        
-        img.append(main_url+ soup1.find('img',class_='wide-image')['src'])
-        
-        # print(title)
-        # print(img)
-    hemisphere= {
-                "title": title,
-                "img_url": img}
+        post['img_url'] = (main_url + soup1.find('img',class_='wide-image')['src'])
+        hemispheres.append(post)
 
-    return hemisphere
+    return hemispheres
+
+#----SCRAPE ALL THE DATA -------
 
 def scrape_all():
     executable_path = {"executable_path": "/usr/local/bin/chromedriver"}
@@ -139,9 +134,10 @@ def scrape_all():
         "last_modified": timestamp
     }
     browser.quit()
+
     return data 
 
-print(scrape_all())
+
 
 
 
