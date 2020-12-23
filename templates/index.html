@@ -53,7 +53,7 @@
                     <div class="row">
                         {% for hemisphere in mars.hemispheres %}
                         <div class="col-md-6">
-                            <div class="card bg-dark text-white " style="margin: 30px;" >
+                            <div class="card bg-dark text-white " style="margin: 10px;" >
                                 <img class="card-img-top" src="{{hemisphere.img_url | default('static/images/error.png', true)}}" alt="..."/>
                                     <div class="card-body">
                                         <h5> {{hemisphere.title}}</h5>
